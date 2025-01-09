@@ -238,19 +238,16 @@ $.extend(frappe.ui.toolbar, {
 	// 	$(document.body).toggleClass("full-width", fullwidth);
 	// },
 	toggle_full_width() {
-        let fullwidth = JSON.parse(localStorage.container_fullwidth || "false");
-        fullwidth = !fullwidth;
-        localStorage.container_fullwidth = fullwidth;
-        frappe.ui.toolbar.set_fullwidth_if_enabled();
-        $(document.body).trigger("toggleFullWidth");
-      },
-      
-      set_fullwidth_if_enabled() {
-        // Ensure full-width is set by default
-        let fullwidth = JSON.parse(localStorage.container_fullwidth || "true"); // Default to true
-        localStorage.container_fullwidth = fullwidth; // Save the default to localStorage
-        $(document.body).toggleClass("full-width", fullwidth);
-      },	
+	    // Directly set full-width class without checking localStorage
+	    $(document.body).addClass("full-width");
+	    $(document.body).trigger("toggleFullWidth");
+	},
+	
+	set_fullwidth_if_enabled() {
+	    // Always enable full-width by adding the class directly
+	    $(document.body).addClass("full-width");
+	},
+
 	show_shortcuts(e) {
 		e.preventDefault();
 		frappe.ui.keys.show_keyboard_shortcut_dialog();
