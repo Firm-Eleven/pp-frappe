@@ -185,27 +185,27 @@ $.extend(frappe.ui.toolbar, {
 
 		parent_element.insertBefore(new_element, parent_element.children[index]);
 	},
-	// toggle_full_width() {
-	// 	let fullwidth = JSON.parse(localStorage.container_fullwidth || "false");
-	// 	fullwidth = !fullwidth;
-	// 	localStorage.container_fullwidth = fullwidth;
-	// 	frappe.ui.toolbar.set_fullwidth_if_enabled();
-	// 	$(document.body).trigger("toggleFullWidth");
-	// },
-	// set_fullwidth_if_enabled() {
-	// 	let fullwidth = JSON.parse(localStorage.container_fullwidth || "false");
-	// 	$(document.body).toggleClass("full-width", fullwidth);
-	// },
 	toggle_full_width() {
-	    // Directly set full-width class without checking localStorage
-	    $(document.body).addClass("full-width");
-	    $(document.body).trigger("toggleFullWidth");
+		let fullwidth = JSON.parse(localStorage.container_fullwidth || "false");
+		fullwidth = !fullwidth;
+		localStorage.container_fullwidth = fullwidth;
+		frappe.ui.toolbar.set_fullwidth_if_enabled();
+		$(document.body).trigger("toggleFullWidth");
 	},
-	
 	set_fullwidth_if_enabled() {
-	    // Always enable full-width by adding the class directly
-	    $(document.body).addClass("full-width");
+		let fullwidth = JSON.parse(localStorage.container_fullwidth || "false");
+		$(document.body).toggleClass("full-width", fullwidth);
 	},
+	// toggle_full_width() {
+	//     // Directly set full-width class without checking localStorage
+	//     $(document.body).addClass("full-width");
+	//     $(document.body).trigger("toggleFullWidth");
+	// },
+	
+	// set_fullwidth_if_enabled() {
+	//     // Always enable full-width by adding the class directly
+	//     $(document.body).addClass("full-width");
+	// },
 	show_shortcuts(e) {
 		e.preventDefault();
 		frappe.ui.keys.show_keyboard_shortcut_dialog();
