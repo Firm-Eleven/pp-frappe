@@ -139,8 +139,8 @@ frappe.router = {
 		if (!frappe.app) return;
 		let sub_path = this.get_sub_path();
 		const prime_plastic = "prime-plastic";
-		if (frappe.boot.setup_complete || sub_path === "home" || sub_path === "") {
-			frappe.set_route(["prime_plastic"]);
+		if (!frappe.boot.setup_complete || sub_path === "home" || sub_path === "") {
+			frappe.set_route([prime_plastic]);
 			return;
 		} 
 		// let sub_path = this.get_sub_path();
