@@ -138,18 +138,18 @@ frappe.router = {
 
 		if (!frappe.app) return;
 		let sub_path = this.get_sub_path();
-		const prime_plastic = "prime-plastic";
-		if (frappe.boot.setup_complete || sub_path === "home" || sub_path === "") {
-			frappe.set_route(["prime-plastic"]);
-			return;
-		} 
-		// let sub_path = this.get_sub_path();
-		// if (frappe.boot.setup_complete) {
-		// 	!frappe.re_route["setup-wizard"] && (frappe.re_route["setup-wizard"] = "app");
-		// } else if (!sub_path.startsWith("setup-wizard")) {
-		// 	frappe.re_route["setup-wizard"] && delete frappe.re_route["setup-wizard"];
-		// 	frappe.set_route(["setup-wizard"]);
-		// }
+		// const prime_plastic = "prime-plastic";
+		// if (frappe.boot.setup_complete || sub_path === "home" || sub_path === "") {
+		// 	frappe.set_route(["prime-plastic"]);
+		// 	return;
+		// } 
+		let sub_path = this.get_sub_path();
+		if (frappe.boot.setup_complete) {
+			!frappe.re_route["setup-wizard"] && (frappe.re_route["setup-wizard"] = "app");
+		} else if (!sub_path.startsWith("setup-wizard")) {
+			frappe.re_route["setup-wizard"] && delete frappe.re_route["setup-wizard"];
+			frappe.set_route(["setup-wizard"]);
+		}
 		if (this.re_route(sub_path)) return;
 
 		this.current_sub_path = sub_path;
