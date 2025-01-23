@@ -432,7 +432,7 @@ export default {
 						request_succeeded: false,
 						error_message: null,
 						uploading: false,
-						private: !this.make_attachments_public,
+						private: false,
 					};
 				});
 
